@@ -17,6 +17,12 @@ changeTitelHandler =(newTitel)=>{
    pageTitel: newTitel
  })
 }
+
+handleInput =(event)=>{
+  this.setState({
+    pageTitel: event.target.value
+  })
+}
   render (){
   const divStyle ={
     textAlign: 'center'
@@ -26,6 +32,7 @@ changeTitelHandler =(newTitel)=>{
   return (
     <div style= {divStyle}>
       <h1>{this.state.pageTitel}</h1>
+      <input type= 'text' onChange ={this.handleInput}/>
       <button onClick ={this.changeTitelHandler.bind(this,'Changed')}>Change title</button>
       <Car  
       name={cars[0].name} 
