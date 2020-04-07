@@ -1,26 +1,47 @@
-import React from 'react';
-import logo from './logo.svg';
+import React,{Component} from 'react';
 import './App.css';
+import Car from './car/car';
 
-function App() {
+class App extends Component{
+
+  state={
+    cars:[
+      {name:'Ford',year : 2019},
+      {name:'Mazda',year : 2018},
+      {name:'Audi',year : 2016}
+    ],
+    pageTitel:"React component"
+  }
+changeTitelHandler =(newTitel)=>{
+ this.setState({
+   pageTitel: newTitel
+ })
+}
+  render (){
+  const divStyle ={
+    textAlign: 'center'
+  };
+
+   const cars = this.state.cars
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style= {divStyle}>
+      <h1>{this.state.pageTitel}</h1>
+      <button onClick ={this.changeTitelHandler.bind(this,'Changed')}>Change title</button>
+      <Car  
+      name={cars[0].name} 
+      year={cars[0].year}
+      onChangeTitle = {this.changeTitelHandler.bind(this,cars[0].name)}/>
+      <Car  
+      name={cars[1].name} 
+      year={cars[1].year}
+      onChangeTitle = {()=>this.changeTitelHandler(cars[1].name)}/>
+      <Car  
+      name={cars[2].name} 
+      year={cars[2].year}
+      onChangeTitle = {this.changeTitelHandler.bind(this,cars[2].name)}/>
     </div>
   );
+  }
 }
-
 export default App;
+
