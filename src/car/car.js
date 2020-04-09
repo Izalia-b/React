@@ -21,8 +21,17 @@ componentDidUpdate(){
     console.log('Car componentDidUpdate ')
 }
 
+getSnapshotBeforeUpdate (){
+console.log('Car getSnapshotBeforeUpdate')
+}
+
 componentWillUnmount(){
     console.log('Car componentWillUnmount ')
+}
+
+static getDerivedStateFromProps(nextProps,prevState){
+    console.log('Car getDerivedStateFromProps',nextProps)
+    return prevState
 }
 
     render(){
