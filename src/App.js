@@ -1,6 +1,8 @@
 import React,{Component} from 'react';
 import './App.scss';
 import Car from './car/car';
+import ErrorBoundery from './ErrorBoundery/ErrorBoundery';
+import Counter from './Counter/Counter';
 
 class App extends Component{
 
@@ -58,13 +60,14 @@ class App extends Component{
     if (this.state.showCars){
       cars =this.state.cars.map((car,index)=>{
         return(
+          <ErrorBoundery key={index}>
           <Car 
-          key={index}
           name = {car.name}
           year = {car.year}
           onChangeName = {(event)=>this.onChangeName(event.target.value,index)}
           onDelete= {this.deleteHandle.bind(this,index)}
           />
+          </ErrorBoundery>
         )
       }) 
     }
@@ -73,7 +76,9 @@ class App extends Component{
       <div style= {divStyle}>
         {/* <h1>{this.state.pageTitel}</h1> */}
         <h1>{this.props.title}</h1>
-        <button className={'AppButton'} onClick ={this.toogleCarsHandler}>Show cars</button>
+        <Counter/>
+        <hr/>
+        <button  style={{marginTop:20}}className={'AppButton'} onClick ={this.toogleCarsHandler}>Show cars</button>
         <div style ={{
           width: 400,
           margin: 'auto',

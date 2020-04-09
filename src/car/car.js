@@ -21,20 +21,21 @@ componentDidUpdate(){
     console.log('Car componentDidUpdate ')
 }
 
-getSnapshotBeforeUpdate (){
-console.log('Car getSnapshotBeforeUpdate')
-}
+// getSnapshotBeforeUpdate (){
+// console.log('Car getSnapshotBeforeUpdate')
+// }
 
 componentWillUnmount(){
     console.log('Car componentWillUnmount ')
 }
 
-static getDerivedStateFromProps(nextProps,prevState){
-    console.log('Car getDerivedStateFromProps',nextProps)
-    return prevState
-}
+// static getDerivedStateFromProps(nextProps,prevState){
+//     console.log('Car getDerivedStateFromProps',nextProps)
+//     return prevState
+// }
 
     render(){
+       
         console.log('Car render ')
         const inputClasses =['input']
 
