@@ -4,15 +4,21 @@ import Car from './car/car';
 
 class App extends Component{
 
-  state={
-    cars:[
-      {name:'Ford',year : 2019},
-      {name:'Mazda',year : 2018},
-      {name:'Audi',year : 2016}
-    ],
-    pageTitel:"React component",
-    showCars : false,
+  constructor(props){
+    console.log(" App constructor")
+    super(props)
+    this.state={
+      cars:[
+        {name:'Ford',year : 2019},
+        // {name:'Mazda',year : 2018},
+        // {name:'Audi',year : 2016}
+      ],
+      pageTitel:"React component",
+      showCars : false,
+    }
   }
+
+ 
   onChangeName (name,index){
     const car = this.state.cars[index] //получили машину на которую нажали инпут
     car.name = name //для нее установили имя из инпут
@@ -33,7 +39,17 @@ class App extends Component{
     this.setState({cars})
   }
 
+    componentWillMount(){
+      console.log(" App componentWillMount")
+    }
+
+    componentDidMount(){
+      console.log("App componentDidMount")
+    }
+
   render (){
+    console.log(" App render")
+
     const divStyle ={
       textAlign: 'center'
   };
@@ -55,7 +71,8 @@ class App extends Component{
 
     return (
       <div style= {divStyle}>
-        <h1>{this.state.pageTitel}</h1>
+        {/* <h1>{this.state.pageTitel}</h1> */}
+        <h1>{this.props.title}</h1>
         <button className={'AppButton'} onClick ={this.toogleCarsHandler}>Show cars</button>
         <div style ={{
           width: 400,
